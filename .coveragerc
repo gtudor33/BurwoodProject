@@ -1,0 +1,9 @@
+[report]
+exclude_lines =
+	pragma: no cover
+	if __name__ == .__main__.:
+omit =
+	fizz-buzz/__main__.py
+	fizz-buzz/external/reporter.py
+	fizz-buzz/external/opentelemetry.py
+	fizz-buzz/external/bugsnag.py

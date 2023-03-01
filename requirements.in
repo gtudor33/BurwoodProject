@@ -1,0 +1,24 @@
+aiocache
+prometheus_client~=0.9
+fastapi
+httpx
+yarl
+freezegun
+invoke
+uvicorn[standard]
+ujson
+dynaconf
+
+
+
+
+# dev dependencies
+mypy>=0.720
+pylint
+pytest
+pytest-cov
+pytest-asyncio
+flake8
+black
+coverage
+respx

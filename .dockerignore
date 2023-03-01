@@ -1,0 +1,31 @@
+# GIT
+.git
+.gitignore
+
+# Documentation
+README.rst
+docs
+
+# Docker
+.dockerignore
+Dockerfile
+Jenkinsfile
+Makefile
+
+# PyCharm
+.idea
+
+**/__pycache__/
+**/*.py[cod]
+*.swp
+.ropeproject/
+.idea
+
+.cache/
+.coverage
+htmlcov
+
+vols/
+.typing_modules/
+.pytest_cache/
+.mypy_cache/

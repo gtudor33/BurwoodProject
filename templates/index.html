@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FizzBuzz App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* Styles for the app layout */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input[type="number"] {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+      }
+      li {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+    </style>
+  </head>
+    <body>
+    <div class="container">
+    <h1>FizzBuzz App</h1>
+    <label>Enter a number:</label>
+    <input type="number" id="number-input">
+    <button id="fizzbuzz-button">FizzBuzz</button>
+    <div id="result"></div>
+    <h2>Top 3 submissions:</h2>
+    <ul id="stats"></ul>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('#fizzbuzz-button').click(function() {
+          var number = $('#number-input').val();
+          $.post('/fizzbuzz', {'number': number}, function(data) {
+            $('#result').text('Result: ' + data.result);
+            $.get('/most_common', function(data) {
+              $('#stats').empty();
+              for (var i = 0; i < data.result.length; i++) {
+                var item = data.result[i];
+                var text = 'number: ' + item[0] + ' ( counts: ' + item[1] + ')';
+                $('#stats').append('<li>' + text + '</li>');
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
