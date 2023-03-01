@@ -14,7 +14,7 @@ async def test_fizzbuzz_non_int(client):
     async with client as ac:
         response = await ac.post("/fizzbuzz", data={"number": "a"})
     assert response.status_code == 422
-    assert response.json()["detail"][0]["msg"] == 'value is not a valid integer'
+    assert response.json()["detail"][0]["msg"] == "value is not a valid integer"
 
 
 @pytest.mark.asyncio
@@ -28,7 +28,7 @@ async def test_fizzbuzz(client):
 @pytest.mark.asyncio
 async def test_fizz(client):
     async with client as ac:
-        response = await ac.post("/fizzbuzz?number=3", data={"number": 3})
+        response = await ac.post("/fizzbuzz", data={"number": 3})
     assert response.status_code == 200
     assert response.json() == {"result": "Fizz"}
 

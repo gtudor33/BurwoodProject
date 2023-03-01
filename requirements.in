@@ -8,8 +8,8 @@ invoke
 uvicorn[standard]
 ujson
 dynaconf
-
-
+jinja2
+python-multipart
 
 
 # dev dependencies

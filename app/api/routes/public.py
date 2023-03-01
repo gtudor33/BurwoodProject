@@ -1,21 +1,10 @@
 from fastapi import APIRouter, Request, Depends, HTTPException, Form
-
-from fastapi.templating import Jinja2Templates
-
 from app.api.dependencies import get_fizzbuzz_client
 from app.clients.fizzbuzz import FizzBuzzClient
 from app.external.metrics.prometheus import timing_metrics
 
 public_router = APIRouter()
-
-
 ENDPOINTS = {"fizzbuzz_number": "/fizzbuzz", "most_common": "/most_common"}
-templates = Jinja2Templates(directory="templates")
-
-
-@public_router.get("/")
-async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @public_router.post(ENDPOINTS["fizzbuzz_number"], tags=["Fizz Buzz Number"])

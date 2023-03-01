@@ -1,15 +1,13 @@
 import logging
-from fastapi import FastAPI
-
-
 from app.api.routes import root as root_router, public_router
+from app.frontend.web import web_app
 from app.settings import Settings
 from app.external.metrics.prometheus import prometheus_middleware
 from app.external.reporter import LogReporter
 
 
 def create_app(settings: Settings):
-    app = FastAPI()
+    app = web_app
     app.reporter = LogReporter()
     app.middleware("http")(prometheus_middleware)
     app.include_router(root_router)

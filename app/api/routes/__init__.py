@@ -5,4 +5,4 @@ from app.api.routes.public import public_router
 
 root = APIRouter()
 root.include_router(base_router)
-root.include_router(public_router, prefix="/public")
+root.include_router(public_router, prefix="/api")
